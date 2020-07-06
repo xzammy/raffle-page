@@ -2,6 +2,8 @@ import Head from "next/head";
 import { siteTitle } from "../components/layout";
 import utilStyles from "../styles/utils.module.css";
 import App from "../components/timerInput";
+import UserList from "../components/userList";
+import { names, SimpleList } from "../components/random";
 
 export default function Home({ allPostsData }) {
   return (
@@ -14,6 +16,7 @@ export default function Home({ allPostsData }) {
         <div className={utilStyles.row}>
           <div className={utilStyles.column}>
             <h2>使用者列表</h2>
+            <SimpleList></SimpleList>
           </div>
           <div className={utilStyles.column}>
             <App></App>
