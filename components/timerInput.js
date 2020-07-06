@@ -1,6 +1,6 @@
 import React from "react";
 import { random } from "../components/random";
-
+import "../styles/utils.module.css";
 class TimerInput extends React.Component {
   render() {
     return (
@@ -31,9 +31,8 @@ class Timer extends React.Component {
 class StartButton extends React.Component {
   render() {
     return (
-      <div style={{ marginLeft: 130 }}>
+      <div>
         <button
-          className="btn btn-lg btn-success"
           disabled={!this.props.value}
           onClick={this.props.startCountDown}
         >
@@ -92,7 +91,6 @@ class App extends React.Component {
       this.state.luckyWinner = random();
       alert(this.state.luckyWinner);
     }
-
     this.secondsRemaining--;
   }
 
@@ -110,31 +108,23 @@ class App extends React.Component {
     if (clicked) {
       return (
         <div>
-          <div className="row">
-            <div className="col-md-4"></div>
-            <div className="col-md-4">
-              <h2> 抽獎時間 </h2>
-              <Timer value={this.state.value} seconds={this.state.seconds} />
-            </div>
-          </div>
+          <h2> 抽獎時間 </h2>
+          <Timer value={this.state.value} seconds={this.state.seconds} />
         </div>
       );
     } else {
       return (
         <div>
-          <div className="col-md-4">
-            <TimerInput
-              value={this.state.value}
-              handleChange={this.handleChange}
-            />
-            <Timer value={this.state.value} seconds={this.state.seconds} />
-            <StartButton
-              startCountDown={this.startCountDown}
-              value={this.state.value}
-            />
-
-            <h2>{this.state.isClicked && this.state.luckyWinner} </h2>
-          </div>
+          <TimerInput
+            value={this.state.value}
+            handleChange={this.handleChange}
+          />
+          <Timer value={this.state.value} seconds={this.state.seconds} />
+          <StartButton
+            startCountDown={this.startCountDown}
+            value={this.state.value}
+          />
+          <h2>{this.state.isClicked && this.state.luckyWinner} </h2>
         </div>
       );
     }
