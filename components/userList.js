@@ -21,8 +21,6 @@ class UserList extends React.Component {
     };
   }
 
-
-  
   handleClick = () => {
     this.setState({
       clicked: true,
@@ -37,11 +35,9 @@ class UserList extends React.Component {
     // let name = names[Math.floor(Math.random() * names.length)];
     return (
       <div>
-        <!--
         <button onClick={this.handleClick}> Random User </button>{" "}
         <p>{this.state.names}</p>
         <h2> {this.state.clicked && this.state.luckyWinner} </h2>
-        -->
       </div>
     );
   }
