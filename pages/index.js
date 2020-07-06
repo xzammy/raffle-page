@@ -6,7 +6,7 @@ import App from "../components/timerInput";
 export default function Home({ allPostsData }) {
   return (
     <>
-      <div className="container">
+      <div className={utilStyles.container}>
         <Head>
           <title> {siteTitle} </title>
         </Head>
