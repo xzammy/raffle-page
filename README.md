@@ -36,3 +36,9 @@ git clone https://github.com/xzammy/raffle-page.git
 ```sh
 npm install
 ```
+
+3. Run
+
+```
+npm run dev
+```
