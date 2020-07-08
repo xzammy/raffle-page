@@ -5,7 +5,7 @@ import App from "../components/timerInput";
 import UserList from "../components/userList";
 import { names, SimpleList } from "../components/random";
 
-export default function Home({ allPostsData }) {
+export default function Home() {
   return (
     <>
       <div className={utilStyles.container}>

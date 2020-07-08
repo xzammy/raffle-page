@@ -1,6 +1,7 @@
 import React from "react";
 import { random } from "../components/random";
 import "../styles/utils.module.css";
+import Popup from "../components/Popup";
 class TimerInput extends React.Component {
   render() {
     return (
@@ -51,6 +52,7 @@ class App extends React.Component {
       value: "",
       isClicked: false,
       luckyWinner: "",
+      showPopup: false,
     };
     this.secondsRemaining;
     this.intervalHandle;
@@ -62,6 +64,12 @@ class App extends React.Component {
   handleChange(event) {
     this.setState({
       value: event.target.value,
+    });
+  }
+
+  togglePopup() {
+    this.setState({
+      showPopup: !this.state.showPopup,
     });
   }
 
@@ -89,7 +97,22 @@ class App extends React.Component {
     if ((min === 0) & (sec === 0)) {
       clearInterval(this.intervalHandle);
       this.state.luckyWinner = random();
-      alert(this.state.luckyWinner);
+      this.setState({
+        showPopup: true,
+      });
+      {
+        this.togglePopup.bind(this);
+      }
+      //alert("抽獎結果: " + this.state.luckyWinner);
+
+      {
+        this.state.showPopup ? (
+          <Popup
+            text={this.state.luckyWinner}
+            closePopup={this.togglePopup.bind(this)}
+          />
+        ) : null;
+      }
     }
     this.secondsRemaining--;
   }
@@ -110,6 +133,12 @@ class App extends React.Component {
         <div>
           <h2> 抽獎時間 </h2>
           <Timer value={this.state.value} seconds={this.state.seconds} />
+          {this.state.showPopup && this.state.isClicked ? (
+            <Popup
+              text={this.state.luckyWinner}
+              closePopup={this.togglePopup.bind(this)}
+            />
+          ) : null}
         </div>
       );
     } else {
@@ -124,7 +153,6 @@ class App extends React.Component {
             startCountDown={this.startCountDown}
             value={this.state.value}
           />
-          <h2>{this.state.isClicked && this.state.luckyWinner} </h2>
         </div>
       );
     }
